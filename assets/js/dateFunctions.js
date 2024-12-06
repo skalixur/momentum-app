@@ -18,6 +18,19 @@ function getFormattedTime(date) {
 }
 
 /**
+ * Returns formatted seconds.
+ *
+ * @param {Date} date - Date to get the formatted seconds of.
+ * @returns string
+ *
+ */
+function getFormattedSeconds(date) {
+  const seconds = date.getSeconds();
+
+  return seconds;
+}
+
+/**
  * Returns a formatted date.
  *
  * @param {Date} date - Date to get the formatted date of.
