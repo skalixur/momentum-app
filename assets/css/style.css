@@ -1,10 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
     min-height: 100vh;
     background-color: #222;
+    background-image: url('../img/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(1rem);
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.date-container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+        "year year year"
+        "weekday month day";
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.year-display {
+    grid-area: year;
+}
+
+.weekday-display {
+    grid-area: weekday;
+    justify-self: end;
+}
+
+.month-display {
+    grid-area: month;
+    justify-self: center;
+}
+
+.day-display {
+    grid-area: day;
+    justify-self: start;
+}
+
+.clock-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+        "time seconds"
+        "time am-pm";
+    align-items: center;
+}
+
+.time-display {
+    font-size: 8rem;
+    grid-area: time;
+}
+
+.am-pm-display {
+    grid-area: am-pm;
+}
+
+.seconds-display {
+    grid-area: seconds;
 }

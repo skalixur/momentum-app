@@ -6,16 +6,27 @@ const dateFunctions = {
    * @returns string
    *
    */
-  getFormattedTime: function (date) {
-    const hours = date.getHours()
-    const minutes = date.getMinutes().toString().padStart(2, '0')
+  getFormatted12HourTime: function (date) {
+    const hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, "0");
 
-    const isPm = hours > 12
-    const pmAm = isPm ? 'pm' : 'am'
+    const isPm = hours > 12;
+    const hoursIn12HourFormat = isPm ? hours - 12 : hours;
 
-    const hoursIn12HourFormat = isPm ? hours - 12 : hours
+    return `${hoursIn12HourFormat}:${minutes}`;
+  },
 
-    return `${hoursIn12HourFormat}:${minutes} ${pmAm}`
+  /**
+   * Returns pm or am depending on the date
+   *
+   * @param {Date} date - Date to get am/pm of.
+   * @returns string
+   *
+   */
+  getAmOrPm: function (date) {
+    const hours = date.getHours();
+    const isPm = hours > 12;
+    return isPm ? "pm" : "am";
   },
 
   /**
@@ -26,9 +37,9 @@ const dateFunctions = {
    *
    */
   getFormattedSeconds: function (date) {
-    const seconds = date.getSeconds()
+    const seconds = date.getSeconds();
 
-    return seconds
+    return seconds;
   },
 
   /**
@@ -38,26 +49,36 @@ const dateFunctions = {
    * @returns string
    *
    */
-  getFormattedDate: function (date) {
+  getFormattedMonth: function (date) {
     const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sept',
-      'Oct',
-      'Nov',
-      'Dec',
-    ]
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sept",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
 
-    const month = months[date.getMonth()]
-    const day = date.getDate()
+    const month = months[date.getMonth()];
 
-    return `${month} ${day}`
+    return `${month}`;
+  },
+
+  /**
+   * Returns a formatted day.
+   *
+   * @param {Date} date - Date to get the formatted day of.
+   * @returns string
+   *
+   */
+  getFormattedDay: function (date) {
+    return date.getDate().toString();
   },
 
   /**
@@ -69,17 +90,17 @@ const dateFunctions = {
    */
   getFormattedWeekday: function (date) {
     const weekDays = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ]
-    let weekDay = weekDays[date.getDay()].slice(0, 3)
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    let weekDay = weekDays[date.getDay()].slice(0, 3);
 
-    return weekDay
+    return weekDay;
   },
 
   /**
@@ -88,7 +109,7 @@ const dateFunctions = {
    * @param {Date} date - Date to get the formatted year of.
    */
   getFormattedYear: function (date) {
-    return date.getFullYear()
+    return date.getFullYear();
   },
 
   /**
@@ -98,19 +119,19 @@ const dateFunctions = {
    * @param {Date} date - Date to get the formatted year of.
    */
   getGreeting: function (name, date) {
-    const hours = date.getHours()
+    const hours = date.getHours();
 
-    let timeDependentGreeting = ''
+    let timeDependentGreeting = "";
     if (hours < 12) {
-      timeDependentGreeting = 'Good morning.'
+      timeDependentGreeting = "Good morning.";
     } else if (hours >= 12 && hours < 18) {
-      timeDependentGreeting = 'Good afternoon.'
+      timeDependentGreeting = "Good afternoon.";
     } else if (hours >= 18) {
-      timeDependentGreeting = 'Good evening.'
+      timeDependentGreeting = "Good evening.";
     }
 
-    return `${name}! ${timeDependentGreeting}`
+    return `${name}! ${timeDependentGreeting}`;
   },
-}
+};
 
-export default dateFunctions
+export default dateFunctions;
