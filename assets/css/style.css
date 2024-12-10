@@ -8,17 +8,18 @@
     --medium-font-size: 1.25rem;
     --hero-font-size: 12rem;
 
-    --gap-xxs: 0.25rem;
-    --gap-xs: 0.5rem;
-    --gap-s: 0.75rem;
-    --gap-m: 1rem;
-    --gap-l: 1.25rem;
-    --gap-xl: 1.5rem;
-    --gap-xxl: 1.75rem;
-    --gap-xxxl: 2rem;
+    --xxs-space: 0.25rem;
+    --xs-space: 0.5rem;
+    --s-space: 0.75rem;
+    --m-space: 1rem;
+    --l-space: 1.25rem;
+    --xl-space: 1.5rem;
+    --xxl-space: 1.75rem;
+    --xxxl-space: 2rem;
 
-    --main-color: black;
+    --main-color: rgba(0, 0, 0, 0.9);
     --faded-color: rgba(0, 0, 0, 0.5);
+    --faded-light-color: rgba(255, 255, 255, 0.5);
     --accent-color: white;
 }
 
@@ -36,7 +37,7 @@ body {
     background-image: url('../img/bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    backdrop-filter: blur(var(--gap-s));
+    backdrop-filter: blur(var(--s-space));
 
     display: flex;
     flex-flow: column nowrap;
@@ -71,7 +72,7 @@ body {
         "time am-pm";
     align-items: center;
     justify-items: center;
-    row-gap: var(--gap-l);
+    row-gap: var(--l-space);
 }
 
 .time-display {
@@ -95,4 +96,71 @@ body {
 .seconds-display {
     grid-area: seconds;
     font-variant-numeric: tabular-nums;
+}
+
+.prompt-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: var(--xs-space);
+}
+
+.prompt-label {
+    font-size: var(--medium-font-size);
+}
+
+.prompt-input {
+    padding: var(--s-space);
+    text-align: center;
+    border: 2px var(--accent-color);
+    border-style: none none solid none;
+    border-radius: var(--xs-space);
+    background-color: var(--faded-color);
+    color: white;
+}
+
+.prompt-input::placeholder {
+    color: var(--faded-light-color);
+}
+
+.prompt-submit {
+    border: none;
+    text-decoration: underline;
+    background: none;
+    color: var(--faded-color);
+    cursor: pointer;
+}
+
+.prompt-input-focus {
+    width: 50vw;
+}
+
+.fade-in-slide-up {
+    animation: fade-in-slide-up 1s ease-in-out both;
+}
+
+@keyframes fade-in-slide-up {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fade-in 1.25s ease-in-out both;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

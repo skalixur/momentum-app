@@ -1,3 +1,5 @@
+import COPY from "./COPY.js";
+
 const dateFunctions = {
   /**
    * Returns a formatted time.
@@ -7,11 +9,15 @@ const dateFunctions = {
    *
    */
   getFormatted12HourTime: function (date) {
-    const hours = date.getHours();
+    let hours = date.getHours();
     const minutes = date.getMinutes().toString().padStart(2, "0");
 
-    const isPm = hours > 12;
-    const hoursIn12HourFormat = isPm ? hours - 12 : hours;
+    if (hours > 12) {
+      hours -= 12;
+    } else if (hours === 0) {
+      hours += 12;
+    }
+    const hoursIn12HourFormat = hours.toString().padStart(2, "0");
 
     return `${hoursIn12HourFormat}:${minutes}`;
   },
@@ -107,9 +113,10 @@ const dateFunctions = {
    * Returns a formatted year.
    *
    * @param {Date} date - Date to get the formatted year of.
+   * @returns string
    */
   getFormattedYear: function (date) {
-    return date.getFullYear();
+    return date.getFullYear().toString();
   },
 
   /**
@@ -117,20 +124,23 @@ const dateFunctions = {
    *
    * @param {String} name - Name to put in the greeting.
    * @param {Date} date - Date to get the formatted year of.
+   * @returns string
    */
   getGreeting: function (name, date) {
     const hours = date.getHours();
 
     let timeDependentGreeting = "";
     if (hours < 12) {
-      timeDependentGreeting = "Good morning.";
+      timeDependentGreeting = "Good morning";
     } else if (hours >= 12 && hours < 18) {
-      timeDependentGreeting = "Good afternoon.";
+      timeDependentGreeting = "Good afternoon";
     } else if (hours >= 18) {
-      timeDependentGreeting = "Good evening.";
+      timeDependentGreeting = "Good evening";
     }
 
-    return `${name}! ${timeDependentGreeting}`;
+    let result = `${COPY.GREETING_BEFORE_NAME}${name}${COPY.GREETING_AFTER_NAME}`;
+    result = result.replaceAll("%%greeting%%", timeDependentGreeting);
+    return result;
   },
 };
 
