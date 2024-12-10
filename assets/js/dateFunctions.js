@@ -26,7 +26,7 @@ const dateFunctions = {
   getAmOrPm: function (date) {
     const hours = date.getHours();
     const isPm = hours > 12;
-    return isPm ? "pm" : "am";
+    return isPm ? "PM" : "AM";
   },
 
   /**
@@ -37,7 +37,7 @@ const dateFunctions = {
    *
    */
   getFormattedSeconds: function (date) {
-    const seconds = date.getSeconds();
+    const seconds = date.getSeconds().toString().padStart(2, "0");
 
     return seconds;
   },
@@ -51,18 +51,18 @@ const dateFunctions = {
    */
   getFormattedMonth: function (date) {
     const months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
+      "January",
+      "February",
+      "March",
+      "April",
       "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sept",
-      "Oct",
-      "Nov",
-      "Dec",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
 
     const month = months[date.getMonth()];
@@ -98,7 +98,7 @@ const dateFunctions = {
       "Friday",
       "Saturday",
     ];
-    let weekDay = weekDays[date.getDay()].slice(0, 3);
+    let weekDay = weekDays[date.getDay()]; // .slice(0, 3);
 
     return weekDay;
   },

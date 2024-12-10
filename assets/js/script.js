@@ -22,7 +22,7 @@ const {
 setInterval(() => {
   const date = new Date();
   yearDisplay.textContent = getFormattedYear(date);
-  weekdayDisplay.textContent = getFormattedWeekday(date);
+  weekdayDisplay.textContent = getFormattedWeekday(date) + ",";
   monthDisplay.textContent = getFormattedMonth(date);
   dayDisplay.textContent = getFormattedDay(date);
   timeDisplay.textContent = getFormatted12HourTime(date);

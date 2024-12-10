@@ -1,10 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+:root {
+    --medium-font-weight: 400;
+    --hero-font-weight: 800;
+
+    --default-font-size: 1rem;
+    --medium-font-size: 1.25rem;
+    --hero-font-size: 12rem;
+
+    --gap-xxs: 0.25rem;
+    --gap-xs: 0.5rem;
+    --gap-s: 0.75rem;
+    --gap-m: 1rem;
+    --gap-l: 1.25rem;
+    --gap-xl: 1.5rem;
+    --gap-xxl: 1.75rem;
+    --gap-xxxl: 2rem;
+
+    --main-color: black;
+    --faded-color: rgba(0, 0, 0, 0.5);
+    --accent-color: white;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
+    color: var(--main-color);
 }
 
 body {
@@ -13,7 +36,7 @@ body {
     background-image: url('../img/bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    backdrop-filter: blur(1rem);
+    backdrop-filter: blur(var(--gap-s));
 
     display: flex;
     flex-flow: column nowrap;
@@ -23,34 +46,20 @@ body {
 
 
 .date-container {
-    display: grid;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-        "year year year"
-        "weekday month day";
-    justify-items: center;
+    display: flex;
+    flex-flow: column nowrap;
     align-items: center;
-    gap: 1rem;
 }
 
 .year-display {
-    grid-area: year;
+    color: var(--faded-color);
+    font-size: var(--default-font-size);
 }
 
-.weekday-display {
-    grid-area: weekday;
-    justify-self: end;
-}
-
-.month-display {
-    grid-area: month;
-    justify-self: center;
-}
-
+.weekday-display,
+.month-display,
 .day-display {
-    grid-area: day;
-    justify-self: start;
+    font-size: var(--medium-font-size);
 }
 
 .clock-container {
@@ -61,17 +70,29 @@ body {
         "time seconds"
         "time am-pm";
     align-items: center;
+    justify-items: center;
+    row-gap: var(--gap-l);
 }
 
 .time-display {
-    font-size: 8rem;
+    font-size: var(--hero-font-size);
+    font-weight: var(--hero-font-weight);
     grid-area: time;
+    /* font-variant-numeric: tabular-nums; */
+}
+
+.am-pm-display,
+.seconds-display {
+    font-size: var(--medium-font-size);
+    font-weight: var(--medium-font-weight);
 }
 
 .am-pm-display {
     grid-area: am-pm;
+    font-variant: small-caps;
 }
 
 .seconds-display {
     grid-area: seconds;
+    font-variant-numeric: tabular-nums;
 }
