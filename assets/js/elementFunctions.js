@@ -28,6 +28,7 @@ const elementFunctions = {
     promptInput.setAttribute('type', 'text')
     promptInput.setAttribute('name', promptInputIdentifier)
     promptInput.setAttribute('placeholder', promptInputPlaceholder)
+    promptInput.setAttribute('autocomplete', 'off')
     promptInput.classList.add(
       'prompt-input',
       `prompt-input-${promptInputIdentifier}`

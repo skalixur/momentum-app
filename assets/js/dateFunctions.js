@@ -145,6 +145,16 @@ const dateFunctions = {
     let result = [timeDependentGreeting, name, nameSuffix]
     return result
   },
+
+  /**
+   * Returns true if the date is at the exact hour.
+   *
+   * @param {Date} date - Date to check if it is at the exact hour.
+   * @returns {Boolean}
+   */
+  isExactHour: function (date) {
+    return date.getMinutes() === 0 && date.getSeconds() === 0
+  },
 }
 
 export default dateFunctions

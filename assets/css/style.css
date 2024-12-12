@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
+  --max-line-height: 4.5lh;
+
   --medium-font-weight: 400;
   --hero-font-weight: 800;
 
@@ -43,6 +45,7 @@ body {
   background-image: url('../img/bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   backdrop-filter: blur(var(--s-space));
 
   display: flex;
@@ -52,22 +55,40 @@ body {
 }
 
 .greeting-container {
-  display: none;
   top: var(--greeting-container-distance-from-top);
   font-size: var(--default-font-size);
 }
 
 .focus-display {
-  display: none;
   bottom: var(--focus-container-distance-from-bottom);
   font-size: var(--medium-font-size);
 }
 
 .quote-display {
-  display: none;
-  /* opacity: 0; */
   bottom: var(--quote-container-distance-from-bottom);
   font-size: var(--medium-font-size);
+  text-align: center;
+}
+
+.greeting-name-display,
+.focus-display,
+.quote-display {
+  padding: var(--xxs-space) 0;
+  transition: background 0.1s ease-in-out, padding 0.1s ease-in-out;
+  border-radius: var(--xs-space);
+
+  &:focus {
+    padding: var(--xxs-space) var(--s-space);
+    background: var(--faded-light-color);
+    outline: none;
+  }
+}
+
+.greeting-container,
+.focus-display,
+.quote-display {
+  display: none;
+  max-height: var(--max-line-height);
   text-align: center;
 }
 
@@ -155,6 +176,10 @@ body {
   border-radius: var(--xs-space);
   background-color: var(--faded-color);
   color: white;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .prompt-input::placeholder {
