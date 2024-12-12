@@ -30,6 +30,11 @@ const secondsDisplay = document.querySelector(".seconds-display");
 const promptContainer = document.querySelector(".prompt-container");
 const submitButton = document.querySelector(".prompt-submit");
 
+const AppState = {
+  username: "",
+  focus: "",
+};
+
 function updateDateAndClock() {
   const date = new Date();
   yearDisplay.textContent = getFormattedYear(date);
@@ -69,22 +74,34 @@ promptContainer.addEventListener("submit", (e) => {
   if (promptContainer.dataset.prompt === "name") {
     promptContainer.dataset.prompt = "focus";
 
-    transitionAnimation("in", focusPromptLabel, "fade-in-slide-up");
-
-    transitionAnimation("in", focusPromptInput, "fade-in");
-
-    // transitionAnimation("in", submitButton, "fade-in");
-
-    hideElement(namePromptLabel);
-    hideElement(namePromptInput);
-    // hideElement(submitButton);
+    transitionAnimation(
+      "out",
+      namePromptInput,
+      "fade-out",
+      false,
+      false,
+      () => {
+        transitionAnimation("in", focusPromptInput, "fade-in");
+      },
+    );
+    transitionAnimation(
+      "out",
+      namePromptLabel,
+      "fade-out",
+      false,
+      false,
+      () => {
+        transitionAnimation("in", focusPromptLabel, "fade-in-slide-up");
+      },
+    );
 
     focusPromptInput.select();
 
     const name = namePromptInput.value;
   } else if (promptContainer.dataset.prompt === "focus") {
-    // hideElement(focusPromptInput);
-    // hideElement(focusPromptLabel);
+    transitionAnimation("out", focusPromptInput, "fade-out");
+    transitionAnimation("out", focusPromptLabel, "fade-out");
+    transitionAnimation("out", submitButton, "fade-out");
 
     let focus = e.target[0].value;
   }

@@ -21,6 +21,9 @@
     --faded-color: rgba(0, 0, 0, 0.5);
     --faded-light-color: rgba(255, 255, 255, 0.5);
     --accent-color: white;
+
+    --date-container-distance-from-top: 32vh;
+    --prompt-container-distance-from-bottom: 22vh;
 }
 
 * {
@@ -45,8 +48,15 @@ body {
     align-items: center;
 }
 
+.date-container,
+.clock-container,
+.prompt-container {
+    position: absolute;
+}
 
 .date-container {
+    top: var(--date-container-distance-from-top);
+
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -99,6 +109,8 @@ body {
 }
 
 .prompt-container {
+    bottom: var(--prompt-container-distance-from-bottom);
+
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -136,12 +148,12 @@ body {
 }
 
 .fade-in-slide-up {
-    animation: fade-in-slide-up 1s ease-in-out both;
+    animation: fade-in-slide-up 500ms ease-in-out both;
 }
 
 @keyframes fade-in-slide-up {
     0% {
-        transform: translateY(100%);
+        transform: translateY(50%);
         opacity: 0;
     }
 
@@ -162,5 +174,19 @@ body {
 
     100% {
         opacity: 1;
+    }
+}
+
+.fade-out {
+    animation: fade-out 500ms ease-in-out both;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
     }
 }
