@@ -1,7 +1,7 @@
-import utils from './utils.js'
+import utils from "./utils.js";
 
 const { showElement, hideElement, setStyles, supportArrayAndSingularValue } =
-  utils
+  utils;
 
 /**
  * Object containing animation functions.
@@ -25,40 +25,42 @@ const { showElement, hideElement, setStyles, supportArrayAndSingularValue } =
  */
 const animationFunctions = {
   transitionAnimation(opts, callback = () => {}) {
-    console.log()
+    console.log();
     const {
-      mode = 'in',
+      mode = "in",
       element,
       animationClass,
       animationOutClass = false,
       styleProperties = false,
-    } = opts
+    } = opts;
 
-    const transitionAnimationPromise = new Promise(resolve => {
+    const transitionAnimationPromise = new Promise((resolve) => {
       if (animationOutClass) {
-        element.classList.toggle(animationOutClass, false)
+        element.classList.toggle(animationOutClass, false);
       }
 
-      showElement(element)
-      supportArrayAndSingularValue(animationClass, value => {
-        element.classList.toggle(value)
-      })
+      showElement(element);
+      supportArrayAndSingularValue(animationClass, (value) => {
+        element.classList.toggle(value);
+      });
 
-      element.addEventListener('animationend', () => {
+      element.addEventListener("animationend", () => {
         if (styleProperties) {
-          setStyles(element, styleProperties)
+          setStyles(element, styleProperties);
         }
-        element.classList.toggle(animationClass, false)
-        if (mode === 'out') {
-          hideElement(element)
+        element.classList.toggle(animationClass, false);
+        if (mode === "out") {
+          hideElement(element);
+        } else {
+          showElement(element);
         }
-        resolve(1)
-        callback()
-      })
-    })
+        resolve();
+        callback();
+      });
+    });
 
-    return transitionAnimationPromise
+    return transitionAnimationPromise;
   },
-}
+};
 
-export default animationFunctions
+export default animationFunctions;

@@ -52,16 +52,20 @@ body {
 }
 
 .greeting-container {
+  display: none;
   top: var(--greeting-container-distance-from-top);
-  font-size: var(--medium-font-size);
+  font-size: var(--default-font-size);
 }
 
 .focus-display {
+  display: none;
   bottom: var(--focus-container-distance-from-bottom);
   font-size: var(--medium-font-size);
 }
 
 .quote-display {
+  display: none;
+  /* opacity: 0; */
   bottom: var(--quote-container-distance-from-bottom);
   font-size: var(--medium-font-size);
   text-align: center;
