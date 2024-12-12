@@ -7,7 +7,7 @@ const utils = {
    *
    */
   getOnlyValueIfArrayLengthIs1(arr) {
-    return arr.length === 1 ? arr[0] : arr;
+    return arr.length === 1 ? arr[0] : arr
   },
 
   /**
@@ -18,8 +18,8 @@ const utils = {
    * @returns {Element}
    *
    */
-  showElement(element, displayMode = "block") {
-    element.style.display = displayMode;
+  showElement(element, displayMode = 'block') {
+    element.style.display = displayMode
   },
 
   /**
@@ -30,7 +30,7 @@ const utils = {
    *
    */
   hideElement(element) {
-    element.style.display = "none";
+    element.style.display = 'none'
   },
 
   /**
@@ -42,10 +42,10 @@ const utils = {
    *
    */
   setStyles(element, styleProperties) {
-    console.log(element, styleProperties);
+    console.log(element, styleProperties)
     for (const stylePropertyName in styleProperties) {
-      const stylePropertyValue = styleProperties[stylePropertyName];
-      element.style[stylePropertyName] = stylePropertyValue;
+      const stylePropertyValue = styleProperties[stylePropertyName]
+      element.style[stylePropertyName] = stylePropertyValue
     }
   },
 
@@ -67,11 +67,11 @@ const utils = {
    */
   supportArrayAndSingularValue(arrayOrString, callback) {
     if (!Array.isArray(arrayOrString)) {
-      callback(arrayOrString, 0, arrayOrString);
-      return;
+      callback(arrayOrString, 0, arrayOrString)
+      return
     }
-    arrayOrString.forEach((v, i, a) => callback(v, i, a));
+    arrayOrString.forEach((v, i, a) => callback(v, i, a))
   },
-};
+}
 
-export default utils;
+export default utils

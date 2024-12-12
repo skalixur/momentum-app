@@ -1,4 +1,4 @@
-import COPY from "./COPY.js";
+import COPY from './copy.js'
 
 const dateFunctions = {
   /**
@@ -9,17 +9,17 @@ const dateFunctions = {
    *
    */
   getFormatted12HourTime: function (date) {
-    let hours = date.getHours();
-    const minutes = date.getMinutes().toString().padStart(2, "0");
+    let hours = date.getHours()
+    const minutes = date.getMinutes().toString().padStart(2, '0')
 
     if (hours > 12) {
-      hours -= 12;
+      hours -= 12
     } else if (hours === 0) {
-      hours += 12;
+      hours += 12
     }
-    const hoursIn12HourFormat = hours.toString().padStart(2, "0");
+    const hoursIn12HourFormat = hours.toString().padStart(2, '0')
 
-    return `${hoursIn12HourFormat}:${minutes}`;
+    return `${hoursIn12HourFormat}:${minutes}`
   },
 
   /**
@@ -30,9 +30,9 @@ const dateFunctions = {
    *
    */
   getAmOrPm: function (date) {
-    const hours = date.getHours();
-    const isPm = hours > 12;
-    return isPm ? "PM" : "AM";
+    const hours = date.getHours()
+    const isPm = hours > 12
+    return isPm ? 'PM' : 'AM'
   },
 
   /**
@@ -43,9 +43,9 @@ const dateFunctions = {
    *
    */
   getFormattedSeconds: function (date) {
-    const seconds = date.getSeconds().toString().padStart(2, "0");
+    const seconds = date.getSeconds().toString().padStart(2, '0')
 
-    return seconds;
+    return seconds
   },
 
   /**
@@ -57,23 +57,23 @@ const dateFunctions = {
    */
   getFormattedMonth: function (date) {
     const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ]
 
-    const month = months[date.getMonth()];
+    const month = months[date.getMonth()]
 
-    return `${month}`;
+    return `${month}`
   },
 
   /**
@@ -84,7 +84,7 @@ const dateFunctions = {
    *
    */
   getFormattedDay: function (date) {
-    return date.getDate().toString();
+    return date.getDate().toString()
   },
 
   /**
@@ -96,17 +96,17 @@ const dateFunctions = {
    */
   getFormattedWeekday: function (date) {
     const weekDays = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    let weekDay = weekDays[date.getDay()]; // .slice(0, 3);
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ]
+    let weekDay = weekDays[date.getDay()] // .slice(0, 3);
 
-    return weekDay;
+    return weekDay
   },
 
   /**
@@ -116,7 +116,7 @@ const dateFunctions = {
    * @returns string
    */
   getFormattedYear: function (date) {
-    return date.getFullYear().toString();
+    return date.getFullYear().toString()
   },
 
   /**
@@ -124,24 +124,27 @@ const dateFunctions = {
    *
    * @param {String} name - Name to put in the greeting.
    * @param {Date} date - Date to get the formatted year of.
-   * @returns string
+   * @returns {String[]} An array containing the greeting message, name, and the greeting suffix.
    */
   getGreeting: function (name, date) {
-    const hours = date.getHours();
+    const hours = date.getHours()
 
-    let timeDependentGreeting = "";
+    let timeDependentGreeting = ''
     if (hours < 12) {
-      timeDependentGreeting = "Good morning";
+      timeDependentGreeting = COPY.GREETING_MORNING
     } else if (hours >= 12 && hours < 18) {
-      timeDependentGreeting = "Good afternoon";
+      timeDependentGreeting = COPY.GREETING_AFTERNOON
     } else if (hours >= 18) {
-      timeDependentGreeting = "Good evening";
+      timeDependentGreeting = COPY.GREETING_EVENING
     }
 
-    let result = `${COPY.GREETING_BEFORE_NAME}${name}${COPY.GREETING_AFTER_NAME}`;
-    result = result.replaceAll("%%greeting%%", timeDependentGreeting);
-    return result;
+    let timeDependentGreetingSuffix = ', '
+    let nameSuffix = '!'
+    timeDependentGreeting += timeDependentGreetingSuffix
+    name
+    let result = [timeDependentGreeting, name, nameSuffix]
+    return result
   },
-};
+}
 
-export default dateFunctions;
+export default dateFunctions

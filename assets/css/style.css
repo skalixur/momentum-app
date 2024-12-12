@@ -1,192 +1,214 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
-    --medium-font-weight: 400;
-    --hero-font-weight: 800;
+  --medium-font-weight: 400;
+  --hero-font-weight: 800;
 
-    --default-font-size: 1rem;
-    --medium-font-size: 1.25rem;
-    --hero-font-size: 12rem;
+  --default-font-size: 1rem;
+  --medium-font-size: 1.25rem;
+  --hero-font-size: 12rem;
 
-    --xxs-space: 0.25rem;
-    --xs-space: 0.5rem;
-    --s-space: 0.75rem;
-    --m-space: 1rem;
-    --l-space: 1.25rem;
-    --xl-space: 1.5rem;
-    --xxl-space: 1.75rem;
-    --xxxl-space: 2rem;
+  --xxs-space: 0.25rem;
+  --xs-space: 0.5rem;
+  --s-space: 0.75rem;
+  --m-space: 1rem;
+  --l-space: 1.25rem;
+  --xl-space: 1.5rem;
+  --xxl-space: 1.75rem;
+  --xxxl-space: 2rem;
 
-    --main-color: rgba(0, 0, 0, 0.9);
-    --faded-color: rgba(0, 0, 0, 0.5);
-    --faded-light-color: rgba(255, 255, 255, 0.5);
-    --accent-color: white;
+  --main-color: rgba(0, 0, 0, 0.9);
+  --faded-color: rgba(0, 0, 0, 0.5);
+  --faded-light-color: rgba(255, 255, 255, 0.5);
+  --accent-color: white;
 
-    --date-container-distance-from-top: 32vh;
-    --prompt-container-distance-from-bottom: 22vh;
+  --date-container-distance-from-top: 32vh;
+  --prompt-container-distance-from-bottom: 22vh;
+  --greeting-container-distance-from-top: 10vh;
+  --quote-container-distance-from-bottom: 10vh;
+  --focus-container-distance-from-bottom: 15vh;
 }
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    color: var(--main-color);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  color: var(--main-color);
 }
 
 body {
-    min-height: 100vh;
-    background-color: #222;
-    background-image: url('../img/bg.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    backdrop-filter: blur(var(--s-space));
+  min-height: 100vh;
+  background-color: #222;
+  background-image: url('../img/bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(var(--s-space));
 
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.greeting-container {
+  top: var(--greeting-container-distance-from-top);
+  font-size: var(--medium-font-size);
+}
+
+.focus-display {
+  bottom: var(--focus-container-distance-from-bottom);
+  font-size: var(--medium-font-size);
+}
+
+.quote-display {
+  bottom: var(--quote-container-distance-from-bottom);
+  font-size: var(--medium-font-size);
+  text-align: center;
 }
 
 .date-container,
 .clock-container,
-.prompt-container {
-    position: absolute;
+.prompt-container,
+.greeting-container,
+.focus-display,
+.quote-display {
+  position: absolute;
 }
 
 .date-container {
-    top: var(--date-container-distance-from-top);
+  top: var(--date-container-distance-from-top);
 
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
 }
 
 .year-display {
-    color: var(--faded-color);
-    font-size: var(--default-font-size);
+  color: var(--faded-color);
+  font-size: var(--default-font-size);
 }
 
 .weekday-display,
 .month-display,
 .day-display {
-    font-size: var(--medium-font-size);
+  font-size: var(--medium-font-size);
 }
 
 .clock-container {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: auto 1fr;
-    grid-template-areas:
-        "time seconds"
-        "time am-pm";
-    align-items: center;
-    justify-items: center;
-    row-gap: var(--l-space);
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'time seconds'
+    'time am-pm';
+  align-items: center;
+  justify-items: center;
+  row-gap: var(--l-space);
 }
 
 .time-display {
-    font-size: var(--hero-font-size);
-    font-weight: var(--hero-font-weight);
-    grid-area: time;
-    /* font-variant-numeric: tabular-nums; */
+  font-size: var(--hero-font-size);
+  font-weight: var(--hero-font-weight);
+  grid-area: time;
+  /* font-variant-numeric: tabular-nums; */
 }
 
 .am-pm-display,
 .seconds-display {
-    font-size: var(--medium-font-size);
-    font-weight: var(--medium-font-weight);
+  font-size: var(--medium-font-size);
+  font-weight: var(--medium-font-weight);
 }
 
 .am-pm-display {
-    grid-area: am-pm;
-    font-variant: small-caps;
+  grid-area: am-pm;
+  font-variant: small-caps;
 }
 
 .seconds-display {
-    grid-area: seconds;
-    font-variant-numeric: tabular-nums;
+  grid-area: seconds;
+  font-variant-numeric: tabular-nums;
 }
 
 .prompt-container {
-    bottom: var(--prompt-container-distance-from-bottom);
+  bottom: var(--prompt-container-distance-from-bottom);
 
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    gap: var(--xs-space);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: var(--xs-space);
 }
 
 .prompt-label {
-    font-size: var(--medium-font-size);
+  font-size: var(--medium-font-size);
 }
 
 .prompt-input {
-    padding: var(--s-space);
-    text-align: center;
-    border: 2px var(--accent-color);
-    border-style: none none solid none;
-    border-radius: var(--xs-space);
-    background-color: var(--faded-color);
-    color: white;
+  padding: var(--s-space);
+  text-align: center;
+  border: 2px var(--accent-color);
+  border-style: none none solid none;
+  border-radius: var(--xs-space);
+  background-color: var(--faded-color);
+  color: white;
 }
 
 .prompt-input::placeholder {
-    color: var(--faded-light-color);
+  color: var(--faded-light-color);
 }
 
 .prompt-submit {
-    border: none;
-    text-decoration: underline;
-    background: none;
-    color: var(--faded-color);
-    cursor: pointer;
+  border: none;
+  text-decoration: underline;
+  background: none;
+  color: var(--faded-color);
+  cursor: pointer;
 }
 
 .prompt-input-focus {
-    width: 50vw;
+  width: 50vw;
 }
 
 .fade-in-slide-up {
-    animation: fade-in-slide-up 500ms ease-in-out both;
+  animation: fade-in-slide-up 500ms ease-in-out both;
 }
 
 @keyframes fade-in-slide-up {
-    0% {
-        transform: translateY(50%);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
 
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.fade-in {
-    animation: fade-in 1.25s ease-in-out both;
+.fade-in-fast {
+  animation: fade-in 500ms ease-in-out both;
 }
 
 @keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
-.fade-out {
-    animation: fade-out 500ms ease-in-out both;
+.fade-out-fast {
+  animation: fade-out 500ms ease-in-out both;
 }
 
 @keyframes fade-out {
-    0% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 1;
+  }
 
-    100% {
-        opacity: 0;
-    }
+  100% {
+    opacity: 0;
+  }
 }

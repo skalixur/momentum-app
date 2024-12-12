@@ -2,6 +2,7 @@ import utils from './utils.js'
 
 const { getOnlyValueIfArrayLengthIs1 } = utils
 
+
 export default async function getRandomQuote(amount = 1) {
   const res = await fetch(`https://dummyjson.com/quotes/random/${amount}`)
   const data = await res.json()
