@@ -1,46 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Momentum App</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <script type="module" src="assets/js/copy.js" defer></script>
-    <script type="module" src="assets/js/quoteFunctions.js" defer></script>
-    <script type="module" src="assets/js/script.js" defer></script>
-    <script type="module" src="assets/js/dateFunctions.js" defer></script>
-    <script type="module" src="assets/js/elementFunctions.js" defer></script>
-    <script type="module" src="assets/js/animationFunctions.js" defer></script>
-  </head>
 
-  <body>
-    <section class="greeting-container">
-      <span class="greeting-prefix-display"></span>
-      <span class="greeting-name-container">
-        <b
-          spellcheck="false"
-          contenteditable
-          class="greeting-name-display"
-        ></b></span
-      ><span class="greeting-suffix-display"></span>
-    </section>
-    <div class="date-container">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Momentum App</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script type="module" src="assets/js/copy.js" defer></script>
+  <script type="module" src="assets/js/quoteFunctions.js" defer></script>
+  <script type="module" src="assets/js/script.js" defer></script>
+  <script type="module" src="assets/js/dateFunctions.js" defer></script>
+  <script type="module" src="assets/js/elementFunctions.js" defer></script>
+  <script type="module" src="assets/js/animationFunctions.js" defer></script>
+</head>
+
+<body>
+  <section class="greeting-container">
+    <span class="greeting-prefix-display"></span>
+    <span class="greeting-name-container">
+      <b spellcheck="false" contenteditable class="greeting-name-display"></b></span><span
+      class="greeting-suffix-display"></span>
+  </section>
+  <section class="center-container">
+    <section class="date-container">
       <span class="year-display"></span>
       <div class="wmd-container">
         <span class="weekday-display"></span>
         <span class="month-display"></span>
         <span class="day-display"></span>
       </div>
-    </div>
-    <div class="clock-container">
+    </section>
+    <section class="clock-container">
       <span class="time-display"></span>
       <span class="am-pm-display"></span>
       <span class="seconds-display"></span>
-    </div>
+    </section>
     <i spellcheck="false" contenteditable class="focus-display"></i>
-    <span spellcheck="false" contenteditable class="quote-display"></span>
-    <form action="#" class="prompt-container">
-      <button class="prompt-submit" type="submit">submit</button>
+  </section>
+  <section class="to-do-container">
+    <form action="#" class="to-do-input-container">
+      <input type="text" name="to-do-input" class="to-do-input" autocomplete="off" placeholder="Anything to do?">
+      <button class="submit-button" type="submit">add</button>
     </form>
-  </body>
+    <ul class="to-do-list">
+
+    </ul>
+  </section>
+  <span spellcheck="false" contenteditable class="quote-display"></span>
+  <form action="#" class="prompt-container">
+    <button class="submit-button" type="submit">submit</button>
+  </form>
+</body>
+
 </html>

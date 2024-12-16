@@ -19,6 +19,7 @@ const utils = {
    *
    */
   showElement(element, displayMode = 'block') {
+    element.style.visibility = 'visible'
     element.style.display = displayMode
   },
 

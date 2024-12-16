@@ -1,6 +1,6 @@
-import animationFunctions, { animationOptions } from './animationFunctions.js'
+import animationFunctions, { animationOptions } from "./animationFunctions.js";
 
-const { transitionAnimation } = animationFunctions
+const { transitionAnimation } = animationFunctions;
 
 const quoteFunctions = {
   /**
@@ -9,13 +9,13 @@ const quoteFunctions = {
    */
   async getRandomQuote() {
     const res = await fetch(
-      `https://quoteslate.vercel.app/api/quotes/random?maxLength=99`
-    )
-    const quoteData = await res.json()
-    const { quote, author } = quoteData
-    const result = { quote, author }
+      `https://quoteslate.vercel.app/api/quotes/random?maxLength=99`,
+    );
+    const quoteData = await res.json();
+    const { quote, author } = quoteData;
+    const result = { quote, author };
 
-    return result
+    return result;
   },
 
   /**
@@ -25,18 +25,18 @@ const quoteFunctions = {
    * @returns {Promise<void>} A promise that resolves when the display update is complete.
    */
   async updateQuoteDisplay(quoteDisplay, quote) {
-    const { fadeOutOpts, fadeInOpts } = animationOptions
+    const { fadeOutOpts, fadeInOpts } = animationOptions;
 
-    await transitionAnimation({ element: quoteDisplay, ...fadeOutOpts })
+    await transitionAnimation({ element: quoteDisplay, ...fadeOutOpts });
     quoteDisplay.textContent = quote.author
       ? `“${quote.quote}” — ${quote.author}`
-      : `${quote.quote}`
+      : `${quote.quote}`;
     await transitionAnimation({
-      mode: 'in',
+      mode: "in",
       element: quoteDisplay,
       ...fadeInOpts,
-    })
+    });
   },
-}
+};
 
-export default quoteFunctions
+export default quoteFunctions;

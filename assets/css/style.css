@@ -8,6 +8,7 @@
 
   --default-font-size: 1rem;
   --medium-font-size: 1.25rem;
+  --bigger-font-size: 2rem;
   --hero-font-size: 12rem;
 
   --xxs-space: 0.25rem;
@@ -24,11 +25,12 @@
   --faded-light-color: rgba(255, 255, 255, 0.5);
   --accent-color: white;
 
-  --date-container-distance-from-top: 32vh;
+  --quote-max-width: 50vw;
+  --greeting-container-distance-from-top: 2vh;
+  --date-container-distance-from-top: 33vh;
+  --focus-container-distance-from-bottom: 37vh;
   --prompt-container-distance-from-bottom: 22vh;
-  --greeting-container-distance-from-top: 10vh;
-  --quote-container-distance-from-bottom: 10vh;
-  --focus-container-distance-from-bottom: 15vh;
+  --quote-container-distance-from-bottom: 2vh;
 }
 
 * {
@@ -46,33 +48,65 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  backdrop-filter: blur(var(--s-space));
+  backdrop-filter: blur(var(--xxs-space));
 
   display: flex;
   flex-flow: column nowrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .greeting-container {
   top: var(--greeting-container-distance-from-top);
-  font-size: var(--default-font-size);
+  font-size: var(--medium-font-size);
 }
 
 .focus-display {
-  bottom: var(--focus-container-distance-from-bottom);
   font-size: var(--medium-font-size);
 }
 
 .quote-display {
   bottom: var(--quote-container-distance-from-bottom);
   font-size: var(--medium-font-size);
+  max-width: var(--quote-max-width);
   text-align: center;
+}
+
+.to-do-container {
+  width: 20vw;
+  height: 100vh;
+  padding: var(--m-space);
+  gap: var(--s-space);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  background-color: var(--faded-light-color);
+  backdrop-filter: blur(var(--m-space));
+  bottom: 0;
+  right: 0;
+}
+
+.to-do-list {}
+
+.to-do-item {
+  list-style-type: none;
+  text-align: left;
+}
+
+.to-do-checkbutton {
+  border: none;
+  background: none;
+  margin-right: var(--xxs-space);
+}
+
+.to-do-checkbutton:hover {
+  cursor: pointer;
 }
 
 .greeting-name-display,
 .focus-display,
-.quote-display {
+.quote-display,
+.to-do-display {
   padding: var(--xxs-space) 0;
   transition: background 0.1s ease-in-out, padding 0.1s ease-in-out;
   border-radius: var(--xs-space);
@@ -87,23 +121,23 @@ body {
 .greeting-container,
 .focus-display,
 .quote-display {
-  display: none;
+  visibility: hidden;
+  /* display: none; */
   max-height: var(--max-line-height);
   text-align: center;
 }
 
-.date-container,
-.clock-container,
-.prompt-container,
 .greeting-container,
-.focus-display,
 .quote-display {
+  margin: var(--s-space);
+}
+
+.prompt-container,
+.to-do-container {
   position: absolute;
 }
 
 .date-container {
-  top: var(--date-container-distance-from-top);
-
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -111,13 +145,12 @@ body {
 
 .year-display {
   color: var(--faded-color);
-  font-size: var(--default-font-size);
 }
 
 .weekday-display,
 .month-display,
 .day-display {
-  font-size: var(--medium-font-size);
+  font-size: var(--bigger-font-size);
 }
 
 .clock-container {
@@ -168,7 +201,8 @@ body {
   font-size: var(--medium-font-size);
 }
 
-.prompt-input {
+.prompt-input,
+.to-do-input {
   padding: var(--s-space);
   text-align: center;
   border: 2px var(--accent-color);
@@ -186,7 +220,7 @@ body {
   color: var(--faded-light-color);
 }
 
-.prompt-submit {
+.submit-button {
   border: none;
   text-decoration: underline;
   background: none;
